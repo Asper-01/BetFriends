@@ -1,0 +1,199 @@
+// BANNIERE
+.banner{
+  height: 30vh;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+//AFFICHAGE DES CARTES BONUS ACHETES
+.card-rewards{
+  justify-content: center;
+  justify-content:space-between;
+  text-align: center;
+  margin-left:1vh;
+  margin-right: 1vh;
+  align-items: center;
+  background: linear-gradient(120deg, #8f195e, #3a3a6e 94.28%);
+  border-radius:10px;
+  color: white;
+  height: 20vh;
+}
+//AFFICHAGE DES CARTES BONUS DISPOS
+.card-rewards2{
+  margin-bottom: 15px;
+  justify-content: center;
+  justify-content:space-between;
+  text-align: center;
+  margin-left:1vh;
+  margin-right: 1vh;
+  align-items: center;
+  background: linear-gradient(165deg, #4f4f9c 8.01%, #8f195e 94.28%);
+  border-radius:10px;
+  color: white;
+  height: 20vh;
+}
+#gris{
+  filter: grayscale(80%);
+  border-color: #bade173c;
+}
+
+// MISE EN PAGE TITRES
+.bonus{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+h1,h2,h3,h4,h5{
+  color: white;
+}
+hr{
+  color: white;
+}
+
+// MISE EN PLACE DU GRID
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+// BOUTONS ET MODALE
+.btn-custom{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 16vh;
+  color: white;
+  background:linear-gradient(180deg, #c39bf5 0%, #8844D6 100%);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+}
+.btn-custom:hover{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 16vh;
+  color: white;
+  background:linear-gradient(180deg, #bd9ee3 0%, #9964d6 100%);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+}
+.btn-custom2{
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 16vh;
+  color: white;
+  background:linear-gradient(180deg, #d7800e 0%, #bd0f43 100%);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+}
+.btn-custom3{
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 16vh;
+  color: white;
+  background:linear-gradient(180deg, #b9de17 0%, #09c33a 100%);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+}
+.btn-outline-light-custom{
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 5vh;
+  width: 18vh;
+  color: white;
+  background:linear-gradient(180deg, #c39bf5 0%, #8844D6 100%);
+  border-radius: 20px;
+}
+.btn-outline-light-custom:hover{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 18vh;
+  color: white;
+  background:linear-gradient(180deg, #bd9ee3 0%, #9964d6 100%);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+}
+
+.titre{
+  margin-bottom: 30px;
+}
+.element{
+  padding-top: 10px;
+}
+
+
+// MODALE DE REWARD
+
+.custom-modal-header {
+  background: linear-gradient(180deg, #BB8CF4 0%, #8844D6 100%);
+  color: white;
+  max-width: 400px;
+}
+.custom-modal-body {
+  background-color: #16113A;
+  color: white;
+}
+.custom-modal-footer {
+  background: linear-gradient(180deg, #BB8CF4 0%, #8844D6 100%);
+  color: white;
+}
+
+.modal-content {
+  background: linear-gradient(120deg, #8f195e, #3a3a6e 94.28%);
+  color: white;
+  border-radius: 8px;
+}
+
+// MISE EN PAGE DE LA PRESENTATION DES BONUS
+.card-mod{
+  border-radius: 8px;
+  background: linear-gradient(180deg, #8461ad 0%, #5f3095 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+}
+.card-mod:hover{
+  border-radius: 8px;
+  background: linear-gradient(180deg, #9069bd 0%, #743bb5 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+}

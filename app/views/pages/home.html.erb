@@ -1,0 +1,33 @@
+
+<div class="row">
+  <div class="grid-1">
+    <div class="banner overflow-hidden rounded-4 shadow-sm mb-3" style="position: relative;" id="subcard">
+      <%= image_tag "wald.jpg", class: "img-fluid", style: "object-fit: cover" %>
+      <div class="text-center text-white" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h1>Ça discute en tribune</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="grid-1">
+    <h3>Les dernières actus foot</h3>
+  </div>
+
+  <div class="grid-2">
+    <% @feed.items.first(8).each do |item| %>
+      <div class="d-flex flex-column justify-content-between card mb-3 p-3 rounded-4 shadow-sm bg-light-2" id="">
+        <div class="text-white">
+          <p class=""><small><em><%= item.pubDate.strftime('%d %B') %></em></small></p>
+          <p class="fs-5"><strong><%= item.title %></strong></p>
+          <hr>
+          <p class="" id="actu-description"><%= item.description %></p>
+        </div>
+        <div class="">
+          <%= link_to "En savoir plus", item.link, class: "text-decoration-none text-white btn btn-outline-primary", target: '_blank'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

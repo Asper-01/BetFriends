@@ -1,0 +1,225 @@
+<%# BANNIERE %>
+
+<div class="banner2 overflow-hidden rounded-4 shadow-sm mb-4" style="position: relative;"id="subcard">
+
+<%# FUNBET %>
+  <%= image_tag "ligne.jpg", class: "img-fluid", style: "object-fit: cover" %>
+  <div data-controller="bet-buttons" class="text-center text-white" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <% @matches.each do |match| %>
+      <% if match.funbet == true && match.date >= Date.today %>
+
+        <div class=" d-flex flex-column justify-content-center align-items-center", id="">
+          <div class="d-flex justify-content-between px-2 text-white">
+            <p class="border m-2 px-1 rounded-3"><%= match.date.strftime('%d %B - %H:%M') %></p>
+          </div>
+
+
+
+          <h1 class="fs-1"><%= match.sport %></h1>
+              <h2>Fun Bet: Double tes points</h2>
+          <div class="d-flex flex-row justify-content-between mt-3 mb-3">
+
+
+          </div>
+
+          <div class="d-flex flex-row">
+            <div class="d-flex flex-column text-white">
+              <%= image_tag "#{match.participations.first.team.logo}", id:"logo-team", class:"me-5" %>
+            </div>
+            <%= simple_form_for @bet do |f|%>
+              <div class="d-none">
+                <%= f.input :match_id, input_html: { value: match.id} %>
+                <%= f.input :participation_id, input_html: { value: match.participations.first.id} %>
+              </div>
+              <%# BOUTON 1 %>
+              <%= f.button :submit, "#{match.participations.first.team.name}", data:{ bet_buttons_target:'submit', action: "click->bet-buttons#disable" }, class:"bouton-paris text-wrap btn text-white btn-bet  rounded-4 text-center  mb-2 shadow-sm" %>
+            <% end %>
+            <%= simple_form_for @bet do |f|%>
+              <div class="d-none">
+                <%= f.input :match_id, input_html: { value: match.id} %>
+              </div>
+
+              <%# BOUTTON NUL %>
+              <%= f.button :submit, "Nul", data: { bet_buttons_target:'submit', action: "click->bet-buttons#disable"} , class:"bouton-paris btn text-white btn-bet  rounded-4 text-center mx-1 mb-2" %>
+            <% end %>
+            <%= simple_form_for @bet do |f|%>
+              <div class="d-none">
+                <%= f.input :match_id, input_html: { value: match.id} %>
+                <%= f.input :participation_id, input_html: {value: match.participations.last.id} %>
+
+              </div>
+
+              <%# BOUTON 2 action target%>
+              <%= f.button :submit, "#{match.participations.last.team.name}", data: { bet_buttons_target:'submit', action: "click->bet-buttons#disable" } , class:"bouton-paris btn text-white btn-bet  rounded-4 text-center mx-1 mb-2" %>
+            <% end %>
+                <div class="d-flex flex-column text-white">
+              <%= image_tag "#{match.participations.last.team.logo}", id:"logo-team", class:"ms-5" %>
+             </div>
+          </div>
+        </div>
+
+      <% end %>
+
+    <% end %>
+
+  </div>
+</div>
+
+
+<%# ----- CONTENT > BETS ----- %>
+
+<div class="grid-3 mb-4 ">
+
+  <% @matches.sort_by { |match| match.date}.each do |match| %>
+    <% if match.funbet == false && match.date >= Date.today %>
+      <div data-controller="bets" class="rounded-4 bg-light-2 bet-card shadow-lg">
+
+        <div class="card-image-top shadow card-image-top-foot text-center">
+
+          <div class="d-flex justify-content-between px-2 text-white opacity-50">
+            <p class="border m-2 px-1 rounded-3"><%= match.date.strftime('%d/%m') %></p>
+            <p class="border m-2 px-1 rounded-3"><%= match.date.strftime('%H:%M') %></p>
+          </div>
+
+          <div class="d-flex flex-row justify-content-around mt-3 ">
+            <div class="d-flex flex-column text-white">
+              <%= image_tag "#{match.participations.first.team.logo}", id:"logo-team" %>
+            </div>
+            <div class="d-flex flex-column text-white">
+              <%= image_tag "#{match.participations.last.team.logo}", id:"logo-team" %>
+             </div>
+          </div>
+
+        </div>
+
+          <div class="d-flex bouton-paris-test grid-3-bis justify-content-around px-2 text-center my-3">
+
+            <%= simple_form_for @bet do |f|%>
+              <div class="d-none">
+                <%= f.input :match_id, input_html: { value: match.id} %>
+                <%= f.input :participation_id, input_html: { value: match.participations.first.id} %>
+                <%= f.input :user_reward_id, input_html: { data: { bets_target: "reward" }} %>
+              </div>
+
+                <%# DESACTIVER LE BOUTTON 1 %>
+                <% user_bets_match_ids = current_user.bets.pluck(:match_id)  %>
+                    <% if user_bets_match_ids.include?(match.id) %>
+                        <!-- Si pari exist, btn disabled -->
+                        <button type="button" class="bouton-paris text-wrap btn text-white btn-bet rounded-4 text-center mb-2 shadow-sm <%= 'btn-green' if match.participations.first.bets.find_by(user: current_user) %>" disabled>
+                          <%= match.participations.first.team.name %>
+                        </button>
+                      <% else %>
+                        <!-- Sinon, affichez les boutons  -->
+                        <% user_bet_team = current_user.bets.find_by(match_id: match.id)&.participation&.team&.name %>
+                        <%= f.button :submit, "#{match.participations.first.team.name}", class: "bouton-paris text-wrap btn text-white btn-bet rounded-4 text-center mb-2 shadow-sm" %>
+                      <% end %>
+                    <% end %>
+
+            <%= simple_form_for @bet do |f|%>
+              <div class="d-none">
+                <%= f.input :match_id, input_html: { value: match.id} %>
+                <%= f.input :user_reward_id, input_html: { data: { bets_target: "reward" }} %>
+              </div>
+
+              <%# DESACTIVER LE BOUTTON NUL %>
+                <% user_bets_match_ids = current_user.bets.pluck(:match_id)  %>
+                    <% if user_bets_match_ids.include?(match.id) %>
+                        <!-- Si pari exist, btn disabled -->
+                        <button type="button" class="bouton-paris text-wrap btn text-white btn-bet rounded-4 text-center mb-2 shadow-sm <%= 'btn-green' if match.bets.where(participation_id: nil).find_by(user: current_user) %>" disabled>
+                          Nul
+                        </button>
+                          <% else %>
+                        <!-- Sinon, affichez les boutons  -->
+                        <% user_bet_team = current_user.bets.find_by(match_id: match.id)&.participation&.team&.name %>
+                        <%= f.button :submit, "Nul",  class:"bouton-paris text-wrap btn text-white btn-bet rounded-4 text-center  mb-2 shadow-sm #{'btn-green' if user_bet_team == 'Nul'}" %>
+                      <% end %>
+            <% end %>
+
+            <%= simple_form_for @bet do |f|%>
+              <div class="d-none">
+                <%= f.input :match_id, input_html: { value: match.id} %>
+                <%= f.input :participation_id, input_html: {value: match.participations.last.id} %>
+                <%= f.input :user_reward_id, input_html: { data: { bets_target: "reward" }} %>
+              </div>
+
+              <%# DESACTIVER LE BOUTTON NUL %>
+              <% user_bets_match_ids = current_user.bets.pluck(:match_id)  %>
+                    <% if user_bets_match_ids.include?(match.id) %>
+                        <!-- Si pari exist, btn disabled -->
+                          <button type="button" class="bouton-paris text-wrap btn text-white btn-bet rounded-4 text-center mb-2 shadow-sm <%= 'btn-green' if match.participations.last.bets.find_by(user: current_user) %>" disabled>
+                          <%= match.participations.last.team.name %>
+                        </button>
+                          <% else %>
+                        <!-- Sinon, affichez les boutons  -->
+                        <% user_bet_team = current_user.bets.find_by(match_id: match.id)&.participation&.team&.name %>
+                        <%= f.button :submit, "#{match.participations.last.team.name}", class:"bouton-paris text-wrap btn text-white btn-bet rounded-4 text-center  mb-2 shadow-sm #{'btn-green' if user_bet_team == match.participations.last.team.name}" %>
+                      <% end %>
+            <% end %>
+
+          </div>
+
+        <div class="col-12 d-flex  flex-column justify-content-center mt-2 mb-3 text-center">
+          <button type="button" class="btn text-white btn-bet-bonus rounded-5 text-center mx-5 pb-0 mb-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#reward-<%=match.id%>-Modal"><%= image_tag "picto/icon-bonus.svg", class:"" %>Utiliser un bonus</button>
+          <% if match.bets.present? %>
+            <p class="text-white"><small><%= match.bets.count %> pari(s) sur ce match.</small></p>
+          <% else %>
+            <p class="text-white">Aucun pari sur ce match</p>
+          <% end %>
+        </div>
+
+        <div class="modal fade" id="reward-<%=match.id%>-Modal" tabindex="-1" aria-labelledby="reward-<%=match.id%>-ModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title title-modal" id="reward-<%=match.id%>-ModalLabel">Mes bonus disponibles</h5>
+              </div>
+              <div class="modal-body bet-bonus d-flex row">
+                <% current_user.user_rewards.each do |user_reward| %>
+                  <% if user_reward.unused? %>
+                    <div class="card-mod d-flex text-center mb-3" data-bs-dismiss="modal" style="width: 18rem;" id="card-reward-bet">
+                      <div id="bet_user_reward_id_<%= user_reward.id %>" data-action="click->bets#RewardSelect" data-bets-reward-value=<%= user_reward.id %> class="d-flex flex-column card-body text-center justify-content-center">
+                        <h5 class="card-title">  <%= image_tag "picto/icon-bonus.svg", class:"picto" %><%= user_reward.reward.title %></h5>
+                        <p class="card-text mb-2"><%= user_reward.reward.description %></p>
+                      </div>
+                    </div>
+                    <% end %>
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<% if user_signed_in? && current_user.sign_in_count == 1 %>
+
+<div class="container">
+<div class="modal fade" data-controller="modal" data-modal-id-value="<%= current_user.id %>" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog connexion">
+
+  <% if current_user.bets.where(progress: 'won').count >= current_user.bets.where(progress: 'lost').count %>
+    <div class="cookiesContent" id="cookiesPopup">
+  <% else %>
+    <div class="cookiesContent2" id="cookiesPopup">
+  <% end %>
+      <button class="close" data-bs-dismiss="modal">✖</button>
+      <div>
+        <% if current_user.bets.where(progress: 'won').count >= current_user.bets.where(progress: 'lost').count %>
+          <h1 class="fs-1"><%= current_user.points_counter %> points</h3>
+          <h1 class="mt-5 display-5 ">Le roi de la lucarne !</h1>
+          <p class="text-white mb-3 p-modal">Bravo ! Tes derniers exploits nous ont impressionné.<br>Continue comme ça...</p>
+        <% else %>
+          <h1 class="fs-1"><%= current_user.points_counter %> points</h3>
+          <h1 class="mt-5 display-5 ">Le maestro des poteaux !</h1>
+          <p class="text-white mb-3 p-modal">Alalala, un petit plat du pied vaut parfois mieux qu'un tir en force... Allez, le prochain sera dedans !</p>
+        <% end %>
+        <button type="button" class="accept" data-bs-dismiss="modal" >J'entre sur le terrain !</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<% end %>

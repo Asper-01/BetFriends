@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BetFriends</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <%# -----NAVBAR HEADER----- %>
+    <div class="container-fluid">
+      <div class="row">
+        <%= render "shared/navbar2" %>
+      </div>
+    </div>
+
+  <%# -----ROW CONTENT----- %>
+    <div class="container-fluid">
+      <div class="row">
+
+    <%# ------ CONTENT > LEFTBAR ----- %>
+        <div class="col-2 mxwidth mxheight">
+          <%= render "shared/leftbar3" %>
+        </div>
+
+    <%# ------ CONTENT > CENTER ------ %>
+        <div class="col-8 mxwidth ">
+          <%= yield %>
+        </div>
+
+    <%# ------ CONTENT > RIGHT ------ %>
+        <div class="col-2 mxwidth mxheight">
+          <%= render "shared/rightbar2", locals: { rss_feed: @rss_feed} %>
+        </div>
+      </div>
+    </div>
+
+    <%= render "shared/flashes" %>
+  </body>
+</html>

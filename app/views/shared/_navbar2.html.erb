@@ -1,0 +1,44 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12  d-flex flex-row justify-content-between  my-3">
+        <div class="title col-2 align-middle">
+          <a href="/"><%= image_tag "logo/logo-betfriends-2.svg", style:"width=120% height=auto" %></a>
+        </div>
+            <div class="col-10">
+              <% if user_signed_in? %>
+                <div class="d-flex justify-content-center align-items-center px-3 link-nav">
+
+                  <div class="navbarclass text-center">
+                    <p><strong><%= image_tag "picto/icon-points.svg", class: "me-2" %><%= current_user.points_counter %> points</strong></p>
+                  </div>
+
+                  <div class="navbarclass text-center">
+                    <p><strong><%= image_tag "picto/icon-bonus.svg", class: "me-2" %><%= current_user.user_rewards.where(progress: 'unused').count %> bonus </strong>en poche </p>
+                  </div>
+
+                  <div class="navbarclass text-center">
+                    <p><strong><%= image_tag "picto/picto-avaaatar.png", class: "me-2" %><%= current_user.nickname %></strong></p>
+                  </div>
+
+                </div>
+
+
+
+              <% else %>
+                <div class="d-flex justify-content-center align-items-center px-3 link-nav">
+
+                  <div class="btnNav">
+                    <%= link_to "Se connecter", new_user_session_path, class: "btn btn-custom-co" %>
+                    </div>
+                    <div class="btnNav">
+                    <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-custom-ins" %>
+                    </div>
+                </div>
+              <% end %>
+
+            </div>
+    </div>
+  </div>
+</div>

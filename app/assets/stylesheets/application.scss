@@ -1,0 +1,295 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+@import "pages/rewards";
+@import "pages/users-show";
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(127deg, #181832 8.01%, #261652 94.28%);
+  // NOT SURE
+  overscroll-behavior: contain;
+}
+
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.grid-3-bis {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+
+}
+
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+
+//********** LEFT-SIDE-BAR NAVLINKS MISE EN PAGE **********
+
+.list-unstyled{
+  padding-top: 30px;
+}
+.range-links.active,
+.range-links:hover {
+  margin:auto;
+  width: 180px;
+  height: 50px;
+  display: grid;
+  place-items:center;
+  position:relative;
+  z-index:0;
+  background-color: #181832;
+}
+.range-links.active::before,
+.range-links:hover::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  padding: 2px;
+  border-radius: 3px;
+  background: linear-gradient(45deg, rgb(249, 249, 249), #820D95), border-box;
+  --grad: linear-gradient(red, red);
+  -webkit-mask: var(--grad) content-box, var(--grad);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  }
+
+
+.sidecontent {
+  background: linear-gradient(148deg, rgba(255, 255, 255, 0.16) -28.48%, rgba(255, 255, 255, 0.00) 114.99%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  height: 90vh;
+}
+
+hr {
+  border-top: 2px solid #fbf9f9;
+}
+
+.classement-list-player {
+  border-radius: 8px;
+  border: 1px solid #FFF;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.range-links {
+  height: 30px;
+}
+
+#right-image-bonus {
+  height: 100% auto;
+  width: 100%;
+}
+
+.link-nav {
+  margin-left: 610px;
+}
+
+
+.form-inputs{
+  color: white;
+  font-weight: 600;
+}
+
+.formulaire{
+  align-items: center;
+  text-align: center;
+  max-width: 400px;
+}
+
+#rss-card {
+    text-wrap: wrap;
+    height: auto;
+    width: auto;
+}
+
+// ---------
+
+.cookiesContent {
+  width: 900px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+
+  justify-content: space-between;
+  background-color: hsl(0, 0%, 100%);
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px 30px 70px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.291);
+  background-image: linear-gradient(rgba(105, 105, 105, 0.175), rgba(44, 44, 44, 0.623)),url("modal-win.png");
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.361);
+
+}
+
+.cookiesContent2 {
+  width: 900px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+
+  justify-content: space-between;
+  background-color: hsl(0, 0%, 100%);
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px 30px 70px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.291);
+  background-image: linear-gradient(rgba(105, 105, 105, 0.175), rgba(44, 44, 44, 0.623)),url("modal-loose.png");
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.361);
+
+}
+
+.p-modal {
+  font-size: 32px;
+}
+
+#img-modal {
+  width: 200px;
+  height: auto;
+}
+
+  button.close {
+    width: 30px;
+    font-size: 20px;
+    color: #eaeaea;
+    align-self: flex-end;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 10px;
+  }
+
+
+  button.accept {
+    background: linear-gradient(180deg, #BB8CF4 0%, #8844D6 100%);
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    padding: 14px;
+    font-size: 16px;
+    color: white;
+    box-shadow: 0px 6px 18px -5px #2a2a2a91
+  }
+
+
+#img-modal {
+width: 300px;
+height: auto;
+}
+
+// MODALE PLEINE PAGE
+.connexion{
+  margin: auto;
+  max-width: unset;
+}
+
+.picto{
+  // display: flex;
+  // align-items: center;
+  width: 50px;
+}
+// MODALE UTILISATION BONUS
+.bet-bonus{
+
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+
+// MISE EN PAGE DE LA PRESENTATION DES BONUS
+.card-mod{
+  border-radius: 8px;
+  background: linear-gradient(180deg, #8461ad 0%, #5f3095 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+}
+.card-mod:hover{
+  border-radius: 8px;
+  background: linear-gradient(180deg, #9069bd 0%, #743bb5 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+}
+
+.card-text{
+  margin-bottom: 40px;
+}
+
+.container-fluid2 {
+  width: 100%;
+  background-color: #000;
+
+}
+
+.loggin {
+  max-height: 80vh;
+  padding-top: 5%;
+}
+
+.img-loggin {
+  height: 100%;
+  width: 400px;
+
+}
+
+.logg-back {
+  width: 800px;
+}
+
+.bg-blue{
+  background: rgb(52,4,52);
+  background: linear-gradient(343deg, rgba(52,4,52,1) 0%, rgba(168,46,195,1) 100%);
+}
+.bg-lightt{
+  background: linear-gradient(148deg, rgba(255, 255, 255, 0.298) -28.48%, rgba(255, 255, 255, 0.264) 114.99%);
+}

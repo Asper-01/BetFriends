@@ -1,0 +1,121 @@
+.btn-green {
+  background: linear-gradient(143deg, #54ef59 5.16%, #0da912  75.71%) !important;
+}
+
+.cover-banner {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.banner2{
+  height: 38vh;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.disabled {
+  background: linear-gradient(143deg, #54ef59 5.16%, #0da912  75.71%) !important;
+  opacity: 1 !important;
+}
+
+.bet-card {
+  overflow: hidden;
+  height: fit-content;
+}
+
+.btn-bet {
+  // background: linear-gradient(350deg, rgba(67,65,109,1) 0%, rgba(85,20,120,1) 100%);
+  // background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.387) 100%), #201e3e;
+  box-shadow: 0px 2px 6.7px 0px rgba(0, 0, 0, 0.29);
+  // background: linear-gradient(180deg, #F9B97E 0%, #C59E12 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%), #555381;
+
+
+
+  min-width: 90px;
+}
+
+
+.btn-bet:hover {
+  background-color: #23223f;
+  box-shadow: 0px 2px 6.7px 0px rgba(0, 0, 0, 0.4);
+
+  // background: linear-gradient(350deg, rgba(17,17,84,1) 0%, rgba(85,20,120,1) 100%);
+}
+
+.btn-bet-bonus {
+  background: linear-gradient(160deg, #BB8CF4 0%, #8844D6 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.07);
+}
+
+.btn-bet-bonus:hover {
+  background: linear-gradient(160deg, #ab7de5 0%, #7b3ac5 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.094);
+}
+
+// .btn-bet-group {
+//   position: absolute;
+//   top: 30px  !important;
+// }
+
+.card-image-top {
+  width: 100%;
+  height: 180px;
+
+}
+
+.card-image-top-foot {
+  min-height: 160px;
+  // background: linear-gradient(165deg, #D8A2F9 -4.88%, #9D0F8F 83.53%);
+  background: linear-gradient(165deg, #67B16A 5.41%, #03421C 93.39%);
+
+
+
+}
+
+
+#card-reward-bet:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+#actu-card {
+  background: rgb(17,17,84);
+  background: linear-gradient(164deg, #332A6D -0.8%, #19153A 104.49%);
+  // width: 460px;
+  min-height: 225px;
+}
+
+#actu-description {
+  max-height: 8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bouton-paris {
+  min-height: 70px;
+}
+
+.bouton-paris-test {
+  min-height: 70px;
+  // max-width: 35px;
+}
+
+#logo-team {
+  height: 80px;
+  width: 80px;
+}
+
+#hero-index-matches {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image:url("https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.bg-light-2 {
+  background: linear-gradient(148deg, rgba(255, 255, 255, 0.16) -28.48%, rgba(255, 255, 255, 0.00) 114.99%);
+}
